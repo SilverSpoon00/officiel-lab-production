@@ -41,17 +41,17 @@ public class CartServer implements Runnable {
         contextHandler.addFilter(EntityManagerContextFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
 
         // Configuration manuelle au lieu du package scanning
-        ResourceConfig packageConfig = new ResourceConfig()
-                .registerInstances(createClientResource(), createCartResource())
-                .registerInstances(new PersistenceExceptionMapper(), new ItemNotFoundException(),
-                        new CannotFindCartExceptionMapper())
-                .register(new DoNotCopyFromTheWebFilter())
-                .register(new CORSFilter());
+//        ResourceConfig packageConfig = new ResourceConfig()
+//                .registerInstances(createClientResource(), createCartResource())
+//                .registerInstances(new PersistenceExceptionMapper(), new ItemNotFoundException(),
+//                        new CannotFindCartExceptionMapper())
+//                .register(new DoNotCopyFromTheWebFilter())
+//                .register(new CORSFilter());
 
-        ServletContainer container = new ServletContainer(packageConfig);
-        ServletHolder servletHolder = new ServletHolder(container);
+        //ServletContainer container = new ServletContainer(packageConfig);
+        //ServletHolder servletHolder = new ServletHolder(container);
 
-        contextHandler.addServlet(servletHolder, "/*");
+        //contextHandler.addServlet(servletHolder, "/*");
 
         try {
             server.start();
