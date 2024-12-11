@@ -1,10 +1,13 @@
 package ca.ulaval.glo4002.cart.context;
 
+import ca.ulaval.glo4002.cart.CartServer;
+
 public class ApplicationContext {
 
     public static final String STORE_PARAMETER = "store";
     public static final String PROMO_PARAMETER = "promo";
     public static final String MODE_PARAMETER = "mode";
+    public static final String PORT_PARAMETER = "port";
 
     public void apply() {
         if (hasParameterValue(STORE_PARAMETER, "xml")) {
@@ -26,6 +29,10 @@ public class ApplicationContext {
 
         if (hasParameterValue(MODE_PARAMETER, "demo")) {
             new DemoPrefillContext().apply();
+        }
+
+        if (System.getProperty(PORT_PARAMETER) != null) {
+            CartServer.PORT = Integer.parseInt(System.getProperty(PORT_PARAMETER));
         }
     }
 
